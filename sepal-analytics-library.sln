@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEPAL.DataAnalyticsLib", "SEPAL.DataAnalyticsLib\SEPAL.DataAnalyticsLib.csproj", "{77933CA2-D413-4072-8099-4A61370CAE58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEPAL.Analytics.DAL", "SEPAL.Analytics.DAL\SEPAL.Analytics.DAL.csproj", "{4657814E-B0B0-4E8E-B0A9-7F0A4ED4937C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{77933CA2-D413-4072-8099-4A61370CAE58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77933CA2-D413-4072-8099-4A61370CAE58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77933CA2-D413-4072-8099-4A61370CAE58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77933CA2-D413-4072-8099-4A61370CAE58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4657814E-B0B0-4E8E-B0A9-7F0A4ED4937C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4657814E-B0B0-4E8E-B0A9-7F0A4ED4937C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4657814E-B0B0-4E8E-B0A9-7F0A4ED4937C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4657814E-B0B0-4E8E-B0A9-7F0A4ED4937C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AC8C1416-D429-4D90-8EBF-13EB54E0A194}
+	EndGlobalSection
+EndGlobal

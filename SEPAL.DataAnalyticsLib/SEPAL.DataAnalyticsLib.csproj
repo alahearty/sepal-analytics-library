@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="DataAnalytics - Copy\**" />
+    <EmbeddedResource Remove="DataAnalytics - Copy\**" />
+    <None Remove="DataAnalytics - Copy\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SEPAL.Analytics.DAL\SEPAL.Analytics.DAL.csproj" />
+  </ItemGroup>
+
+</Project>
