@@ -1,31 +1,29 @@
-﻿using System;
+﻿using Oracle.ManagedDataAccess.Client;
+using SEPAL.Analytics.DAL.Abstractions;
+using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Data;
 using System.Data.SqlClient;
-using SEPAL.Analytics.DAL.Abstractions;
+using System.Text;
 
 namespace SEPAL.Analytics.DAL.DatabaseManager
 {
-
-    public class DatabaseContext : IDatabaseContext
+    internal class OracleDatabaseContext : IDatabaseContext
     {
         private readonly string connectionString;
-
-        public DatabaseContext(string connectionString)
+        public OracleDatabaseContext(string connectionString)
         {
             this.connectionString = connectionString;
         }
-
         public IEnumerable<T> ExecuteQuery<T>(string query)
         {
             var result = new List<T>();
 
-            using (var connection = new SqlConnection(connectionString))
+            using (var connection = new OracleConnection(connectionString))
             {
                 connection.Open();
 
-                using (var command = new SqlCommand(query, connection))
+                using (var command = new OracleCommand(query, connection))
                 {
                     using (var reader = command.ExecuteReader())
                     {
@@ -41,28 +39,55 @@ namespace SEPAL.Analytics.DAL.DatabaseManager
             return result;
         }
 
-        public void ExecuteNonQuery(string query)
+        public bool ExecuteNonQuery(string query)
         {
-            using (var connection = new SqlConnection(connectionString))
+            bool Status = false;
+            try
             {
-                connection.Open();
-
-                using (var command = new SqlCommand(query, connection))
+                using (var connection = new OracleConnection(connectionString))
                 {
-                    command.ExecuteNonQuery();
+                    connection.Open();
+
+                    using (var command = new OracleCommand(query, connection))
+                    {
+                        command.ExecuteNonQuery();
+                    }
                 }
+                Status = true;
             }
+            catch (Exception ex)
+            {
+                Status = false;
+                throw new Exception("Exception Occurred During Insert, Update, or Delete Operation :  {0}", ex);
+            }
+            return Status;
+        }
+
+
+        private T MapToEntity<T>(OracleDataReader reader)
+        {
+            // Implement your mapping logic here to map the data from the reader to entity of type T
+            // Example:
+            // var entity = new T();
+            // entity.Property1 = reader.GetString(0);
+            // entity.Property2 = reader.GetInt32(1);
+            // ...
+            // return entity;
+
+            // Note: This is just a placeholder, you need to customize it based on your entity mapping logic
+            return default(T);
         }
 
         public IEnumerable<T> ExecuteProcedure<T>(string procedureName, params SqlParameter[] parameters)
         {
+
             var result = new List<T>();
 
-            using (var connection = new SqlConnection(connectionString))
+            using (var connection = new OracleConnection(connectionString))
             {
                 connection.Open();
 
-                using (var command = new SqlCommand(procedureName, connection))
+                using (var command = new OracleCommand(procedureName, connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddRange(parameters);
@@ -104,21 +129,5 @@ namespace SEPAL.Analytics.DAL.DatabaseManager
             var query = $"SELECT * FROM {tableName}";
             return ExecuteQuery<T>(query);
         }
-
-        private T MapToEntity<T>(SqlDataReader reader)
-        {
-            // Implement your mapping logic here to map the data from the reader to entity of type T
-            // Example:
-            // var entity = new T();
-            // entity.Property1 = reader.GetString(0);
-            // entity.Property2 = reader.GetInt32(1);
-            // ...
-            // return entity;
-
-            // Note: This is just a placeholder, you need to customize it based on your entity mapping logic
-            return default(T);
-        }
     }
-
-
 }

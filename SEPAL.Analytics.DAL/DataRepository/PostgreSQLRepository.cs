@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using SEPAL.Analytics.DAL.Abstractions;
 
-namespace SEPAL.Analytics.DAL.DatabaseManager
+namespace SEPAL.Analytics.DAL.DataRepository
 {
     public class PostgreSQLRepository<T> : IRepository<T>
     {
@@ -22,6 +22,7 @@ namespace SEPAL.Analytics.DAL.DatabaseManager
             string query = $"SELECT * FROM {tableName}";
             return databaseContext.ExecuteQuery<T>(query);
         }
+
 
         public void Add(T entity)
         {
@@ -44,7 +45,7 @@ namespace SEPAL.Analytics.DAL.DatabaseManager
         private string GenerateInsertQuery(T entity)
         {
             // Generate the INSERT query dynamically based on the properties of the entity
-            
+
             var properties = typeof(T).GetProperties();
             var columns = string.Join(", ", properties.Select(p => p.Name));
             var values = string.Join(", ", properties.Select(p => $"'{p.GetValue(entity)}'"));
@@ -52,7 +53,7 @@ namespace SEPAL.Analytics.DAL.DatabaseManager
             return query;
 
             // Note: This is just a placeholder, you need to customize it based on your entity structure and mapping logic
-           // return string.Empty;
+            // return string.Empty;
         }
 
         private string GenerateUpdateQuery(T entity)
@@ -65,17 +66,17 @@ namespace SEPAL.Analytics.DAL.DatabaseManager
             return query;
 
             // Note: This is just a placeholder, you need to customize it based on your entity structure and mapping logic
-           // return string.Empty;
+            // return string.Empty;
         }
 
         private string GenerateDeleteQuery(T entity)
         {
-             //Generate the DELETE query dynamically based on the properties of the entity
-             //Example:
-             var properties = typeof(T).GetProperties();
-             var conditions = string.Join(" AND ", properties.Select(p => $"{p.Name} = '{p.GetValue(entity)}'"));
-             var query = $"DELETE FROM {tableName} WHERE {conditions}";
-             return query;
+            //Generate the DELETE query dynamically based on the properties of the entity
+            //Example:
+            var properties = typeof(T).GetProperties();
+            var conditions = string.Join(" AND ", properties.Select(p => $"{p.Name} = '{p.GetValue(entity)}'"));
+            var query = $"DELETE FROM {tableName} WHERE {conditions}";
+            return query;
 
             // Note: This is just a placeholder, you need to customize it based on your entity structure and mapping logic
             //return string.Empty;

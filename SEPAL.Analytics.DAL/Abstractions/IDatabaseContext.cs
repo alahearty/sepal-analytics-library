@@ -8,7 +8,7 @@ namespace SEPAL.Analytics.DAL.Abstractions
     public interface IDatabaseContext
     {
         IEnumerable<T> ExecuteQuery<T>(string query);
-        void ExecuteNonQuery(string query);
+        bool ExecuteNonQuery(string query);
         IEnumerable<T> ExecuteProcedure<T>(string procedureName, params SqlParameter[] parameters);
         IEnumerable<T> ExecuteMaterializedView<T>(string viewName, params SqlParameter[] parameters);
         IEnumerable<T> ExecuteCTE<T>(string cteQuery, params SqlParameter[] parameters);

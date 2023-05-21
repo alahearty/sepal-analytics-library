@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SEPAL.Analytics.DAL.DatabaseManager
+namespace SEPAL.Analytics.DAL.DataRepository
 {
-    public class MSSQLRepository<T> : IRepository<T>
+    public class OracleRepository<T> : IRepository<T>
     {
         private readonly IDatabaseContext databaseContext;
         private readonly string tableName;
 
-        public MSSQLRepository(IDatabaseContext databaseContext, string tableName)
+        public OracleRepository(IDatabaseContext databaseContext, string tableName)
         {
             this.databaseContext = databaseContext;
             this.tableName = tableName;

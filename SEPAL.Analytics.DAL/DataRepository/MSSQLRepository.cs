@@ -3,15 +3,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data.SqlClient;
 
-namespace SEPAL.Analytics.DAL.DatabaseManager
+namespace SEPAL.Analytics.DAL.DataRepository
 {
-    public class OracleRepository<T> : IRepository<T>
+    public class MSSQLRepository<T> : IRepository<T>
     {
         private readonly IDatabaseContext databaseContext;
         private readonly string tableName;
 
-        public OracleRepository(IDatabaseContext databaseContext, string tableName)
+        public MSSQLRepository(IDatabaseContext databaseContext, string tableName)
         {
             this.databaseContext = databaseContext;
             this.tableName = tableName;
@@ -27,6 +28,7 @@ namespace SEPAL.Analytics.DAL.DatabaseManager
         {
             string query = GenerateInsertQuery(entity);
             databaseContext.ExecuteNonQuery(query);
+
         }
 
         public void Update(T entity)
@@ -48,6 +50,7 @@ namespace SEPAL.Analytics.DAL.DatabaseManager
             var properties = typeof(T).GetProperties();
             var columns = string.Join(", ", properties.Select(p => p.Name));
             var values = string.Join(", ", properties.Select(p => $"'{p.GetValue(entity)}'"));
+
             var query = $"INSERT INTO {tableName} ({columns}) VALUES ({values})";
             return query;
 

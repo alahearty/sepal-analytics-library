@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SEPAL.Analytics.DAL.DatabaseManager
+namespace SEPAL.Analytics.DAL.DataRepository
 {
     public class MongoDbRepository<T> : IRepository<T>
     {

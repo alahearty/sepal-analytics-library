@@ -1,5 +1,6 @@
 ﻿using MongoDB.Driver;
 using SEPAL.Analytics.DAL.Abstractions;
+using SEPAL.Analytics.DAL.DataRepository;
 using System;
 using System.Collections.Generic;
 using System.Text;
