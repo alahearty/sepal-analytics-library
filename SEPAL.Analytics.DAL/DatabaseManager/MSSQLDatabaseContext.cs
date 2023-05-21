@@ -8,7 +8,7 @@ using SEPAL.Analytics.DAL.Abstractions;
 namespace SEPAL.Analytics.DAL.DatabaseManager
 {
 
-    public class MSSQLDatabaseContext : IDatabaseContext
+    public class MSSQLDatabaseContext : IDatabaseContext<SqlParameter>
     {
         private readonly string connectionString;
         public MSSQLDatabaseContext(string connectionString)

@@ -8,7 +8,7 @@ using SEPAL.Analytics.DAL.Abstractions;
 
 namespace SEPAL.Analytics.DAL.DatabaseManager
 {
-    public class PostgreSQLDatabaseContext : IDatabaseContext
+    public class PostgreSQLDatabaseContext : IDatabaseContext<NpgsqlParameter>
     {
         private readonly string connectionString;
         public PostgreSQLDatabaseContext(string connectionString)
@@ -128,30 +128,7 @@ namespace SEPAL.Analytics.DAL.DatabaseManager
             return default(T);
         }
 
-        public IEnumerable<T> ExecuteProcedure<T>(string procedureName, params SqlParameter[] parameters)
-        {
-            throw new NotImplementedException();
-        }
 
-        public IEnumerable<T> ExecuteMaterializedView<T>(string viewName, params SqlParameter[] parameters)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<T> ExecuteCTE<T>(string cteQuery, params SqlParameter[] parameters)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<T> ExecuteView<T>(string viewName, params SqlParameter[] parameters)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<T> ExecuteForeignTable<T>(string tableName, params SqlParameter[] parameters)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
 

@@ -8,7 +8,7 @@ using System.Text;
 
 namespace SEPAL.Analytics.DAL.DatabaseManager
 {
-    internal class OracleDatabaseContext : IDatabaseContext
+    internal class OracleDatabaseContext : IDatabaseContext<OracleParameter>
     {
         private readonly string connectionString;
         public OracleDatabaseContext(string connectionString)
@@ -78,7 +78,7 @@ namespace SEPAL.Analytics.DAL.DatabaseManager
             return default(T);
         }
 
-        public IEnumerable<T> ExecuteProcedure<T>(string procedureName, params SqlParameter[] parameters)
+        public IEnumerable<T> ExecuteProcedure<T>(string procedureName, params OracleParameter[] parameters)
         {
 
             var result = new List<T>();
@@ -106,25 +106,25 @@ namespace SEPAL.Analytics.DAL.DatabaseManager
             return result;
         }
 
-        public IEnumerable<T> ExecuteMaterializedView<T>(string viewName, params SqlParameter[] parameters)
+        public IEnumerable<T> ExecuteMaterializedView<T>(string viewName, params OracleParameter[] parameters)
         {
             var query = $"SELECT * FROM {viewName}";
             return ExecuteQuery<T>(query);
         }
 
-        public IEnumerable<T> ExecuteCTE<T>(string cteQuery, params SqlParameter[] parameters)
+        public IEnumerable<T> ExecuteCTE<T>(string cteQuery, params OracleParameter[] parameters)
         {
             var query = $"WITH cte AS ({cteQuery}) SELECT * FROM cte";
             return ExecuteQuery<T>(query);
         }
 
-        public IEnumerable<T> ExecuteView<T>(string viewName, params SqlParameter[] parameters)
+        public IEnumerable<T> ExecuteView<T>(string viewName, params OracleParameter[] parameters)
         {
             var query = $"SELECT * FROM {viewName}";
             return ExecuteQuery<T>(query);
         }
 
-        public IEnumerable<T> ExecuteForeignTable<T>(string tableName, params SqlParameter[] parameters)
+        public IEnumerable<T> ExecuteForeignTable<T>(string tableName, params OracleParameter[] parameters)
         {
             var query = $"SELECT * FROM {tableName}";
             return ExecuteQuery<T>(query);
