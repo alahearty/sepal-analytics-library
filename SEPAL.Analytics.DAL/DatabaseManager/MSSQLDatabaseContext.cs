@@ -115,10 +115,9 @@ namespace SEPAL.Analytics.DAL.DatabaseManager
             return ExecuteQuery<T>(query);
         }
 
-
-        private T MapToEntity<T>(SqlDataReader reader) where T : new()
+        private T MapToEntity<T>(SqlDataReader reader) 
         {
-            var entity = new T(); // Create an instance of the entity using reflection
+            var entity = Activator.CreateInstance<T>(); // Create an instance of the entity using reflection
 
             // Implement your mapping logic here to map the data from the reader to entity of type T
             // Example:

@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEPAL.DataAnalyticsLib", "SEPAL.DataAnalyticsLib\SEPAL.DataAnalyticsLib.csproj", "{77933CA2-D413-4072-8099-4A61370CAE58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SEPAL.DataAnalyticsLib", "SEPAL.DataAnalyticsLib\SEPAL.DataAnalyticsLib.csproj", "{77933CA2-D413-4072-8099-4A61370CAE58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEPAL.Analytics.DAL", "SEPAL.Analytics.DAL\SEPAL.Analytics.DAL.csproj", "{4657814E-B0B0-4E8E-B0A9-7F0A4ED4937C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SEPAL.Analytics.DAL", "SEPAL.Analytics.DAL\SEPAL.Analytics.DAL.csproj", "{4657814E-B0B0-4E8E-B0A9-7F0A4ED4937C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebView2.wpf", "WebView2.wpf\WebView2.wpf.csproj", "{F653E85B-87E4-4FCD-A5E1-935DDEA84AEE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEPAL.Analytics.API", "SEPAL.Analytics.API\SEPAL.Analytics.API.csproj", "{D6E01F1F-1122-44EA-A82D-B3FC2AC0A9A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEPAL.Analytics.WPF", "SEPAL.Analytics.WPF\SEPAL.Analytics.WPF.csproj", "{9DCB59B5-EE75-41AB-999D-75A332C70CA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +25,14 @@ Global
 		{4657814E-B0B0-4E8E-B0A9-7F0A4ED4937C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4657814E-B0B0-4E8E-B0A9-7F0A4ED4937C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4657814E-B0B0-4E8E-B0A9-7F0A4ED4937C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F653E85B-87E4-4FCD-A5E1-935DDEA84AEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F653E85B-87E4-4FCD-A5E1-935DDEA84AEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F653E85B-87E4-4FCD-A5E1-935DDEA84AEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F653E85B-87E4-4FCD-A5E1-935DDEA84AEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6E01F1F-1122-44EA-A82D-B3FC2AC0A9A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6E01F1F-1122-44EA-A82D-B3FC2AC0A9A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6E01F1F-1122-44EA-A82D-B3FC2AC0A9A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6E01F1F-1122-44EA-A82D-B3FC2AC0A9A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DCB59B5-EE75-41AB-999D-75A332C70CA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DCB59B5-EE75-41AB-999D-75A332C70CA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DCB59B5-EE75-41AB-999D-75A332C70CA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DCB59B5-EE75-41AB-999D-75A332C70CA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
