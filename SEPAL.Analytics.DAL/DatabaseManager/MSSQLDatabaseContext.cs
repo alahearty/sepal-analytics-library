@@ -115,18 +115,20 @@ namespace SEPAL.Analytics.DAL.DatabaseManager
             return ExecuteQuery<T>(query);
         }
 
-        private T MapToEntity<T>(SqlDataReader reader)
+
+        private T MapToEntity<T>(SqlDataReader reader) where T : new()
         {
+            var entity = new T(); // Create an instance of the entity using reflection
+
             // Implement your mapping logic here to map the data from the reader to entity of type T
             // Example:
-            // var entity = new T();
             // entity.Property1 = reader.GetString(0);
             // entity.Property2 = reader.GetInt32(1);
             // ...
-            // return entity;
 
-            // Note: This is just a placeholder, you need to customize it based on your entity mapping logic
-            return default(T);
+            // Note: You need to ensure that the property names and data types in the reader match the properties of the entity
+
+            return entity;
         }
     }
 

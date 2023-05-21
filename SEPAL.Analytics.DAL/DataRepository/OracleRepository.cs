@@ -1,4 +1,5 @@
-﻿using SEPAL.Analytics.DAL.Abstractions;
+﻿using Oracle.ManagedDataAccess.Client;
+using SEPAL.Analytics.DAL.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,12 +7,12 @@ using System.Text;
 
 namespace SEPAL.Analytics.DAL.DataRepository
 {
-    public class OracleRepository<T> : IRepository<T>
+    public class OracleRepository<T, TContext> : IRepository<T> where TContext : IDatabaseContext<OracleParameter>
     {
-        private readonly IDatabaseContext databaseContext;
+        private readonly IDatabaseContext<OracleParameter> databaseContext;
         private readonly string tableName;
 
-        public OracleRepository(IDatabaseContext databaseContext, string tableName)
+        public OracleRepository(IDatabaseContext<OracleParameter> databaseContext, string tableName)
         {
             this.databaseContext = databaseContext;
             this.tableName = tableName;

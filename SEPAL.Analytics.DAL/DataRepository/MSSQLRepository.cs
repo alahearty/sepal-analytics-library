@@ -7,12 +7,12 @@ using System.Data.SqlClient;
 
 namespace SEPAL.Analytics.DAL.DataRepository
 {
-    public class MSSQLRepository<T> : IRepository<T>
+    public class MSSQLRepository<T, TContext> : IRepository<T> where TContext : IDatabaseContext<SqlParameter>
     {
-        private readonly IDatabaseContext databaseContext;
+        private readonly IDatabaseContext<SqlParameter> databaseContext;
         private readonly string tableName;
 
-        public MSSQLRepository(IDatabaseContext databaseContext, string tableName)
+        public MSSQLRepository(IDatabaseContext<SqlParameter> databaseContext, string tableName)
         {
             this.databaseContext = databaseContext;
             this.tableName = tableName;

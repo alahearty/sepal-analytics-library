@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Npgsql;
 using SEPAL.Analytics.DAL.Abstractions;
 
 namespace SEPAL.Analytics.DAL.DataRepository
 {
-    public class PostgreSQLRepository<T> : IRepository<T>
+    public class PostgreSQLRepository<T, TContext> : IRepository<T> where TContext : IDatabaseContext<NpgsqlParameter>
     {
-        private readonly IDatabaseContext databaseContext;
+        private readonly IDatabaseContext<NpgsqlParameter> databaseContext;
         private readonly string tableName;
 
-        public PostgreSQLRepository(IDatabaseContext databaseContext, string tableName)
+        public PostgreSQLRepository(IDatabaseContext<NpgsqlParameter> databaseContext, string tableName)
         {
             this.databaseContext = databaseContext;
             this.tableName = tableName;
